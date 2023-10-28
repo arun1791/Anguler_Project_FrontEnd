@@ -43,8 +43,9 @@ public class MySecurityConfig {
                         authorizeHttpRequests->authorizeHttpRequests
                                 .requestMatchers("/home/**")
                                 .authenticated()
-//                                .requestMatchers("/users/**").permitAll()
-                                .requestMatchers("/auth/login").permitAll()
+                                .requestMatchers("/users/**").permitAll()
+                                .requestMatchers("/auth/**").permitAll()
+//                                .requestMatchers("/auth/current-user").permitAll()
                                 .requestMatchers("/auth/signup").permitAll()
 //                                .requestMatchers("/users/").permitAll()
                                 .anyRequest().authenticated())
@@ -69,17 +70,5 @@ public class MySecurityConfig {
         return daoAuthenticationProvider;
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Origin","Authorization", "Cache-Control", "Content-Type", "xsrfheadername","xsrfcookiename"
-                ,"X-Requested-With","XSRF-TOKEN","Accept", "x-xsrf-token","withcredentials","x-csrftoken"));
-        configuration.setExposedHeaders(Arrays.asList("custom-header1", "custom-header2"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+
 }

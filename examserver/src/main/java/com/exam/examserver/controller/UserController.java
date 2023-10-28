@@ -27,11 +27,11 @@ public class UserController {
         Set<UserRole> userRoles=new HashSet<>();
       user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role role=new Role();
-        role.setRoleId(44L);
-        role.setRoleName("ADMIN");
+//        role.setRoleId(44L);
+//        role.setRoleName("ADMIN");
 //        Role role1=new Role();
-//        role.setRoleId(45L);
-//        role.setRoleName("NORMALUSER");
+        role.setRoleId(46L);
+        role.setRoleName("NORMAL");
         UserRole userRole=new UserRole();
         userRole.setUser(user);
         userRole.setRole(role);
